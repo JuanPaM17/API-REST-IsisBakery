@@ -1,6 +1,5 @@
-package com.spring.bakery.IService;
+package com.spring.bakery.iService;
 
-import com.spring.bakery.modelo.EstadoPedido;
 import com.spring.bakery.modeloDTO.EstadoPedidoDTO;
 import com.spring.bakery.modeloDTO.UsuarioDTO;
 

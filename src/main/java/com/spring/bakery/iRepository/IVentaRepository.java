@@ -1,6 +1,5 @@
-package com.spring.bakery.IRepository;
+package com.spring.bakery.iRepository;
 
-import com.spring.bakery.modelo.Usuario;
 import com.spring.bakery.modelo.Venta;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

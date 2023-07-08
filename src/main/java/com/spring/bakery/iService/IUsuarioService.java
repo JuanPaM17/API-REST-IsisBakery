@@ -1,6 +1,5 @@
-package com.spring.bakery.IService;
+package com.spring.bakery.iService;
 
-import com.spring.bakery.modelo.Usuario;
 import com.spring.bakery.modeloDTO.UsuarioDTO;
 
 import java.util.ArrayList;
