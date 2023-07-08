@@ -1,14 +1,14 @@
 package com.spring.bakery.modeloDTO;
 
-public class TipoUsuario {
+public class TipoUsuarioDTO {
 
     private int id;
 
     private String nombre;
-    public TipoUsuario() {
+    public TipoUsuarioDTO() {
     }
 
-    public TipoUsuario(int id, String nombre) {
+    public TipoUsuarioDTO(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }

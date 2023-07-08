@@ -16,7 +16,7 @@ public class UsuarioDTO {
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(int id, String nombre, long cedula, String apellido, String fechaNacimiento, long celular, String correo, String direccion, String color, String contrasena, EstadoUsuarioDTO estadoUsuario, TipoUsuario tipoUsuario) {
+    public UsuarioDTO(int id, String nombre, long cedula, String apellido, String fechaNacimiento, long celular, String correo, String direccion, String color, String contrasena, EstadoUsuarioDTO estadoUsuario, TipoUsuarioDTO tipoUsuario) {
         this.id = id;
         this.nombre = nombre;
         this.cedula = cedula;
