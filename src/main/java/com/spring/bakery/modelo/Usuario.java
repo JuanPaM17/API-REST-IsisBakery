@@ -10,7 +10,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "", nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
     @Column(name = "cedula", nullable = false)
     private long cedula;

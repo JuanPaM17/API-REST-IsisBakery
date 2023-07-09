@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public interface IEstadoPedidoService {
 
-    public EstadoPedidoDTO guardar(UsuarioDTO EstadoPedidoUsuarioDTO);
+    public EstadoPedidoDTO guardar(EstadoPedidoDTO EstadoPedidoDTO);
 
     public ArrayList<EstadoPedidoDTO> obtener();
 
