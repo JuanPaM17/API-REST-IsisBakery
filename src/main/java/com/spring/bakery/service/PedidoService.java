@@ -1,7 +1,10 @@
 package com.spring.bakery.service;
 
 import com.spring.bakery.exception.ResourceNoFound;
+import com.spring.bakery.iRepository.IEstadoPedidoRepository;
 import com.spring.bakery.iRepository.IPedidoRepository;
+import com.spring.bakery.iRepository.IUsuarioRepository;
+import com.spring.bakery.iService.IEstadoPedidoService;
 import com.spring.bakery.iService.IPedidoService;
 import com.spring.bakery.modelo.Pedido;
 import com.spring.bakery.modelo.TipoUsuario;
@@ -23,9 +26,21 @@ public class PedidoService implements IPedidoService {
     @Autowired
     private IPedidoRepository iPedidoRepository;
 
+    @Autowired
+    private IEstadoPedidoRepository iEstadoPedidoRepository;
+
+    @Autowired
+    private IUsuarioRepository iUsuarioRepository;
+
     @Override
-    public PedidoDTO guardar(PedidoDTO pedidoDTO) {
-        return mapearDTO(iPedidoRepository.save(mapearClase(pedidoDTO)));
+    public PedidoDTO guardar(PedidoDTO pedidoDTO,int id_estado_pedido,int id_cliente) {
+        Pedido pedido = mapearClase(pedidoDTO);
+        pedido.setCliente(iUsuarioRepository.findById(id_cliente).orElseThrow(()->
+                new ResourceNoFound("Usuario","id",id_cliente)));
+        pedido.setEstadoPedido(iEstadoPedidoRepository.findById(id_estado_pedido).orElseThrow(
+                ()-> new ResourceNoFound("Estado Pedido","ID", id_estado_pedido)
+        ));
+        return mapearDTO(iPedidoRepository.save(pedido));
     }
 
     @Override

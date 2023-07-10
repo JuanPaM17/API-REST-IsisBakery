@@ -1,6 +1,8 @@
 package com.spring.bakery.service;
 
 import com.spring.bakery.exception.ResourceNoFound;
+import com.spring.bakery.iRepository.IEstadoUsuarioRepository;
+import com.spring.bakery.iRepository.ITipoUsuarioRepository;
 import com.spring.bakery.iRepository.IUsuarioRepository;
 import com.spring.bakery.iService.IUsuarioService;
 import com.spring.bakery.modelo.Usuario;
@@ -22,10 +24,25 @@ public class UsuarioService implements IUsuarioService {
     @Autowired
     private IUsuarioRepository iUsuarioRepository;
 
+    @Autowired
+    private IEstadoUsuarioRepository iEstadoUsuarioRepository;
+
+    @Autowired
+    private ITipoUsuarioRepository iTipoUsuarioRepository;
+
     @Override
-    public UsuarioDTO guardar(UsuarioDTO usuarioDTO) {
+    public UsuarioDTO guardar(UsuarioDTO usuarioDTO, int id_estado_usuario, int id_tipo_usuario) {
         Usuario usuario = mapearClase(usuarioDTO);
-        return mapearDTO(iUsuarioRepository.save(usuario));
+        try {
+            usuario.setEstadoUsuario(iEstadoUsuarioRepository.findById(id_estado_usuario).orElseThrow(()->
+                    new ResourceNoFound("Estado Usuario","Id",id_estado_usuario)));
+            usuario.setTipoUsuario(iTipoUsuarioRepository.findById(id_tipo_usuario).orElseThrow(()->
+                    new ResourceNoFound("Tipo Usuario","ID",id_tipo_usuario)
+            ));
+            return mapearDTO(iUsuarioRepository.save(usuario));
+        }catch (Exception e){
+            return null;
+        }
     }
 
     @Override

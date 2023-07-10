@@ -14,7 +14,7 @@ public class Producto {
     private String codigo;
     @Column(name = "", nullable = false)
     private String nombre;
-    @Column(name = "descricpion", nullable = false)
+    @Column(name = "descripcion", nullable = false)
     private String descripcion;
     @Column(name = "precio_venta", nullable = false)
     private float precioVenta;
@@ -31,6 +31,9 @@ public class Producto {
         this.precioVenta = precioVenta;
         this.cantidad = cantidad;
         this.urlFoto = urlFoto;
+    }
+
+    public Producto() {
     }
 
     public int getId() {

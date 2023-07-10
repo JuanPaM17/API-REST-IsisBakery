@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface IVentaService {
 
-    public VentaDTO guardar(VentaDTO VentaDTO);
+    public VentaDTO guardar(VentaDTO VentaDTO,int id_pedido,int id_vendedor);
 
     public ArrayList<VentaDTO> obtener();
 

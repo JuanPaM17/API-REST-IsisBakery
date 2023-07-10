@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface IDetallePedidoService {
 
-    public DetallePedidoDTO guardar(DetallePedidoDTO DetallePedidoDTO);
+    public DetallePedidoDTO guardar(DetallePedidoDTO DetallePedidoDTO,int id_pedido,int id_producto);
 
     public ArrayList<DetallePedidoDTO> obtener();
 

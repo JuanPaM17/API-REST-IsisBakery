@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface IPedidoService {
 
-    public PedidoDTO guardar(PedidoDTO PedidoDTO);
+    public PedidoDTO guardar(PedidoDTO PedidoDTO,int id_estado_pedido,int id_cliente);
 
     public ArrayList<PedidoDTO> obtener();
 

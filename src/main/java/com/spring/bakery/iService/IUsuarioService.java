@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface IUsuarioService {
 
-    public UsuarioDTO guardar(UsuarioDTO usuarioDTO);
+    public UsuarioDTO guardar(UsuarioDTO usuarioDTO, int id_estado_usuario, int id_tipo_usuario);
 
     public ArrayList<UsuarioDTO> obtener();
 

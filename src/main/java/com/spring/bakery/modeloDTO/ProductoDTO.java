@@ -24,6 +24,9 @@ public class ProductoDTO {
         this.urlFoto = urlFoto;
     }
 
+    public ProductoDTO() {
+    }
+
     public int getId() {
         return id;
     }

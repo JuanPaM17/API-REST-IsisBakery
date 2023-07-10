@@ -1,6 +1,8 @@
 package com.spring.bakery.service;
 
 import com.spring.bakery.exception.ResourceNoFound;
+import com.spring.bakery.iRepository.IPedidoRepository;
+import com.spring.bakery.iRepository.IUsuarioRepository;
 import com.spring.bakery.iRepository.IVentaRepository;
 import com.spring.bakery.iService.IVentaService;
 import com.spring.bakery.modelo.Usuario;
@@ -22,9 +24,20 @@ public class VentaService implements IVentaService {
     @Autowired
     private IVentaRepository iVentaRepository;
 
+    @Autowired
+    private IUsuarioRepository iUsuarioRepository;
+
+    @Autowired
+    private IPedidoRepository iPedidoRepository;
+
     @Override
-    public VentaDTO guardar(VentaDTO ventaDTO) {
-        return mapearDTO(iVentaRepository.save(mapearClase(ventaDTO)));
+    public VentaDTO guardar(VentaDTO ventaDTO,int id_pedido,int id_vendedor) {
+        Venta venta = mapearClase(ventaDTO);
+        venta.setPedido(iPedidoRepository.findById(id_pedido).orElseThrow(
+                ()-> new ResourceNoFound("Pedido","ID", id_pedido)));
+        venta.setVendedor(iUsuarioRepository.findById(id_vendedor).orElseThrow(
+                ()-> new ResourceNoFound("Usuario","id",id_vendedor)));
+        return mapearDTO(iVentaRepository.save(venta));
     }
 
     @Override

@@ -2,8 +2,11 @@ package com.spring.bakery.service;
 
 import com.spring.bakery.exception.ResourceNoFound;
 import com.spring.bakery.iRepository.IDetallePedidoRepository;
+import com.spring.bakery.iRepository.IPedidoRepository;
+import com.spring.bakery.iRepository.IProductoRepository;
 import com.spring.bakery.iService.IDetallePedidoService;
 import com.spring.bakery.modelo.DetallePedido;
+import com.spring.bakery.modelo.Pedido;
 import com.spring.bakery.modelo.Usuario;
 import com.spring.bakery.modeloDTO.DetallePedidoDTO;
 import com.spring.bakery.modeloDTO.UsuarioDTO;
@@ -22,9 +25,22 @@ public class DetallePedidoService implements IDetallePedidoService {
     @Autowired
     private IDetallePedidoRepository iDetallePedidoRepository;
 
+    @Autowired
+    private IProductoRepository iProductoRepository;
+
+    @Autowired
+    private IPedidoRepository iPedidoService;
+
     @Override
-    public DetallePedidoDTO guardar(DetallePedidoDTO detallePedidoDTO) {
-        return mapearDTO(iDetallePedidoRepository.save(mapearClase(detallePedidoDTO)));
+    public DetallePedidoDTO guardar(DetallePedidoDTO detallePedidoDTO,int id_pedido,int id_producto) {
+        DetallePedido detallePedido = mapearClase(detallePedidoDTO);
+        detallePedido.setPedido(iPedidoService.findById(id_pedido).orElseThrow(
+                ()-> new ResourceNoFound("Pedido","ID",id_pedido)
+        ));
+        detallePedido.setProducto(iProductoRepository.findById(id_producto).orElseThrow(
+                ()-> new ResourceNoFound("Producto","ID",id_producto)
+        ));
+        return mapearDTO(iDetallePedidoRepository.save(detallePedido));
     }
 
     @Override
