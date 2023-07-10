@@ -13,9 +13,9 @@ public class DatabaseConfig {
     public DataSource getConexion() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/api_isis");
-        dataSource.setUsername("root");
-        dataSource.setPassword("");
+        dataSource.setUrl("jdbc:mysql://pxukqohrckdfo4ty.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/qju279a6gz92bvt9");
+        dataSource.setUsername("bqiwsmdrbd3robo5");
+        dataSource.setPassword("jmmbm19uazz52ky4");
         return dataSource;
     }
 
