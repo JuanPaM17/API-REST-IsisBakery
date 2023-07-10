@@ -14,6 +14,7 @@ public class ErrorDetails {
         this.detalle = detalle;
     }
 
+
     public Date getMarcaTiempo() {
         return marcaTiempo;
     }

@@ -1,16 +1,36 @@
 package com.spring.bakery.modeloDTO;
 
+import jakarta.validation.constraints.*;
+
 public class UsuarioDTO {
 
     private int id;
+    @NotEmpty
+    @Size(min=5,message = "El nombre debe tener almenos 5 Caracteres")
     private String nombre;
+    @NotEmpty
+    @Size(min=10,message = "La cedula debe tener almenos 10 Caracteres")
     private long cedula;
+    @NotEmpty
+    @Size(min=5,message = "El apellido debe tener almenos 5 Caracteres")
     private String apellido;
+    @NotEmpty
+    @Size(min=9,message = "La fecha debe tener almenos 9 Caracteres")
     private String fechaNacimiento;
+    @NotEmpty
+    @Size(min=10,message = "El numero debe tener almenos 10 Caracteres")
     private long celular;
+    @NotEmpty
+    @Size(min=5,message = "El correo debe tener almenos 5 Caracteres")
     private String correo;
+    @NotEmpty
+    @Size(min=5,message = "La direccion debe tener almenos 5 Caracteres")
     private String direccion;
+    @NotEmpty
+    @Size(min=5,message = "El color debe tener almenos 5 Caracteres")
     private String color;
+    @NotEmpty
+    @Size(min=5,message = "La contraseña debe tener almenos 5 Caracteres")
     private String contrasena;
 
     public UsuarioDTO() {

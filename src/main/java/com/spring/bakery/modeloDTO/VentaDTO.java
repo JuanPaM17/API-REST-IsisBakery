@@ -1,11 +1,15 @@
 package com.spring.bakery.modeloDTO;
 
+import jakarta.validation.constraints.*;
+
 public class VentaDTO {
 
     private int id;
 
     private long nit;
 
+    @NotEmpty
+    @Size(min=9,message = "La fecha debe tener almenos 9 Caracteres")
     private String fechaGeneracion;
 
     public VentaDTO(int id, long nit, String fechaGeneracion) {

@@ -3,6 +3,7 @@ package com.spring.bakery.controller;
 
 import com.spring.bakery.modeloDTO.VentaDTO;
 import com.spring.bakery.service.VentaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class VentaRestController {
 
     @PostMapping("/{id_pedido}/{id_vendedor}")
     public ResponseEntity<VentaDTO> guardarVenta(
-            @RequestBody VentaDTO VentaDTO,
+            @Valid @RequestBody VentaDTO VentaDTO,
             @PathVariable(value="id_pedido",required = true) int id_pedido,
             @PathVariable(value="id_vendedor",required = true) int id_vendedor){
         return new ResponseEntity<>(ventaService.guardar(VentaDTO,id_pedido,id_vendedor),HttpStatus.CREATED);
@@ -37,7 +38,7 @@ public class VentaRestController {
 
     @PutMapping("/{id_pedido}/{id_vendedor}")
     public ResponseEntity<VentaDTO> actualizarVenta(
-            @RequestBody VentaDTO VentaDTO,
+            @Valid @RequestBody VentaDTO VentaDTO,
             @PathVariable(value="id_pedido",required = true) int id_pedido,
             @PathVariable(value="id_vendedor",required = true) int id_vendedor){
         return new ResponseEntity<>(ventaService.guardar(VentaDTO,id_pedido,id_vendedor),HttpStatus.ACCEPTED);
